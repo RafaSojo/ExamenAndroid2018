@@ -1,17 +1,14 @@
 package com.rafasojo.examen2018.examenandroid;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.Handler;
-import android.os.SystemClock;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import java.util.concurrent.TimeUnit;
-
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(savedInstanceState);
     }
 
+    @SuppressLint("CommitPrefEdits")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,10 +113,9 @@ public class MainActivity extends AppCompatActivity {
                 // Ahora mostramos la secuencia
                 try {
                     // Reseteamos secuencia actual
-                    secuenciaParcial = new ArrayList<Integer>();
+                    secuenciaParcial = new ArrayList<>();
                     mostrarSecuencia(secuenciaActual);
-                }
-                catch(Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -184,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Para obtener la secuencia de números aleatorios
     private ArrayList<Integer> getSecuenciaAleatoria(int numero) {
-        ArrayList<Integer> secuencia = new ArrayList<Integer>();
+        ArrayList<Integer> secuencia = new ArrayList<>();
         for (int i = 0; i < numero; i++){
             secuencia.add((int)(Math.random() * 3));
         }
@@ -192,10 +189,6 @@ public class MainActivity extends AppCompatActivity {
         return secuencia;
     }
 
-    // generar numero aleatorio
-    private int getNumeroAleatorio(){
-        return (int)(Math.random() * 3);
-    }
 
 
     private boolean comparaSecuencias(ArrayList<Integer> secuenciaCompleta, ArrayList<Integer> secuenciaParcial) {
@@ -207,8 +200,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void resetearJuego() {
         resetearColores();
-        secuenciaActual = new ArrayList<Integer>();
-        secuenciaParcial = new ArrayList<Integer>();
+        secuenciaActual = new ArrayList<>();
+        secuenciaParcial = new ArrayList<>();
         nivelActual = 0;
         //deshabilitarBotonesElegir();
         //habilitarBotonIniciarSecuencia();
